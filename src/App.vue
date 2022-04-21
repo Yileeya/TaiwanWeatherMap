@@ -17,11 +17,7 @@
     export default {
         name: 'App',
         metaInfo: {
-            title: 'Taiwan Weather Map',
-            meta: [{                 // set meta
-                name: 'keyWords',
-                content: 'My Example App'
-            }]
+            title: 'Taiwan Weather Map'
         },
         components: {
             LoadingView,
