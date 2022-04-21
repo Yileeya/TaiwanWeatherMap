@@ -49,7 +49,7 @@
 
 <style scoped lang="scss">
     svg{
-        height: 100vh;
+        height: calc(100vh - 48.4px);
         .county-path{
             stroke:     whitesmoke;
             fill:       transparent;
