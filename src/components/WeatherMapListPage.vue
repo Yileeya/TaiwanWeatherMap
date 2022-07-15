@@ -52,6 +52,7 @@
     import axios from 'axios';
     import _ from 'lodash';
     import WeatherIcon from '@/components/WeatherIcon';
+    import moment from 'moment';
 
     export default {
         name: "WeatherMapListPage",
@@ -89,11 +90,11 @@
                         } else if(r.elementName == 'PoP') {
                             this.poP = r.time.map(t => t.parameter.parameterName);
                         } else if(r.elementName == 'Wx') {
-                            let today = this.dateFormat(new Date, 'YYYY-MM-DD');
                             this.wx = r.time.map(t => {
+                                const startHour = moment(t.startTime).hours();
                                 return {
-                                    isToday: t.startTime.slice(0, 10) === today,
-                                    isDaytime: t.startTime.slice(11, 13) === '06',
+                                    isToday: moment(t.startTime).isSame(new Date(), "day"),
+                                    isDaytime: startHour >= 6 && startHour < 18,
                                     name: t.parameter.parameterName,
                                     value: t.parameter.parameterValue
                                 }
